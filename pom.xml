@@ -379,6 +379,9 @@
           <excludes>
             <exclude>src/ide-support/**/*.*</exclude>
           </excludes>
+          <mapping>
+            <java>SLASHSTAR_STYLE</java>
+          </mapping>
         </configuration>
         <executions>
           <execution>
