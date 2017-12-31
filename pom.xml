@@ -408,10 +408,11 @@
         <artifactId>jdepend-maven-plugin</artifactId>
         <version>2.0</version>
       </plugin>
+      <!-- Findbugs was replaced by spotbugs but requires java 8 to run, consider switching -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-        <version>3.0.4</version>
+        <version>3.0.5</version>
           <configuration>
             <effort>Max</effort>
           </configuration>
