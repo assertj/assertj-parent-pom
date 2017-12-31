@@ -257,6 +257,7 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <!-- This plugin is retired and should be removed.  M2e handles eclipse now entirely -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
