@@ -12,7 +12,7 @@
   <url>http://assertj.org</url>
   <organization>
     <name>AssertJ</name>
-    <url>joel-costigliola.github.io/assertj/index.html</url>
+    <url>https://assertj.github.io/doc/</url>
   </organization>
   <licenses>
     <license>
@@ -471,8 +471,8 @@
                   <goal>jar</goal>
                 </goals>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <additionalparam>${additionalparam}</additionalparam>
+                  <source>${maven.compiler.source}</source>
+                  <additionalparam>${additionalparam}</additionalparam>
                 </configuration>
               </execution>
             </executions>
@@ -507,7 +507,7 @@
                         </goals>
                       </pluginExecutionFilter>
                       <action>
-                        <ignore />
+                        <ignore/>
                       </action>
                     </pluginExecution>
                     <pluginExecution>
@@ -520,7 +520,7 @@
                         </goals>
                       </pluginExecutionFilter>
                       <action>
-                        <ignore />
+                        <ignore/>
                       </action>
                     </pluginExecution>
                     <pluginExecution>
@@ -533,7 +533,7 @@
                         </goals>
                       </pluginExecutionFilter>
                       <action>
-                        <ignore />
+                        <ignore/>
                       </action>
                     </pluginExecution>
                   </pluginExecutions>
