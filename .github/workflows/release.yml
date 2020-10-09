@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      OSSRH_USERNAME:
+        description: 'OSSRH Username'
+        required: true
+      OSSRH_TOKEN:
+        description: 'OSSRH Token'
+        required: true
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Maven Central Repository
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Configure Git
+        run: |
+          git config --global author.email '${{ github.actor }}@users.noreply.github.com'
+          git config --global author.name '${{ github.actor }}'
+          git config --global committer.email 'actions@github.com'
+          git config --global committer.name 'GitHub Actions'
+      - name: Configure GPG
+        run: |
+          gpg --version
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG
+      - name: Publish package
+        run: |
+          export GPG_TTY=$(tty)
+          ./mvnw -B release:prepare release:perform -Dpassword=${{ secrets.GITHUB_TOKEN }} -Darguments=-Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }}
+        env:
+          MAVEN_USERNAME: ${{ github.event.inputs.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets[github.event.inputs.OSSRH_TOKEN] }}
