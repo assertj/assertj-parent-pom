@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "::add-mask::${{ github.event.inputs.OSSRH_USERNAME }}"
           echo "::add-mask::${{ github.event.inputs.OSSRH_TOKEN }}"
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
       - name: Set up Maven Central Repository
         uses: actions/setup-java@v1
         with:
