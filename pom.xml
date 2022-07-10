@@ -120,7 +120,7 @@
     <junit-jupiter.version>5.8.2</junit-jupiter.version>
     <mockito.version>4.6.1</mockito.version>
     <!-- Plugin versions -->
-    <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
+    <spotbugs-maven-plugin.version>4.7.1.0</spotbugs-maven-plugin.version>
     <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
     <license-maven-plugin.version>4.1</license-maven-plugin.version>
     <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
@@ -314,9 +314,9 @@
           <version>${maven-surefire-report-plugin.version}</version>
         </plugin>
         <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>findbugs-maven-plugin</artifactId>
-          <version>${findbugs-maven-plugin.version}</version>
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-maven-plugin</artifactId>
+          <version>${spotbugs-maven-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -479,10 +479,9 @@ Copyright ${inceptionYear}-${currentYear} the original author or authors.
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
       </plugin>
-      <!-- Findbugs was replaced by spotbugs but requires java 8 to run, consider switching -->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
         <configuration>
           <effort>Max</effort>
         </configuration>
